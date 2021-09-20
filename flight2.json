@@ -1,0 +1,14 @@
+{
+	"flights": [
+		{
+			"destinationairport": "LAX",
+			"equipment": "E75",
+			"flight": "DL932",
+			"flighttime": 650,
+			"name": "Delta Air Lines",
+			"price": 81.25,
+			"sourceairport": "SFO",
+			"utc": "10:57:00"
+		}
+	]
+}
