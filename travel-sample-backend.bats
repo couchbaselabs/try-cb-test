@@ -47,7 +47,7 @@ setup() {
 
     status_is 201
     jq_ok '.context[0] | startswith("KV insert - scoped to tenant_agent_00.users:")'
-    jq_ok '.data.token | length > 100'
+    jq_ok '.data.token | length > 0'
 
     jq_get '.data.token' > user.token
 
@@ -65,7 +65,7 @@ setup() {
 
     status_is 200
     jq_ok '.context[0] | startswith("KV get - scoped to tenant_agent_00.users:")'
-    jq_ok '.data.token | length > 100'
+    jq_ok '.data.token | length > 0'
 
     jq_get '.data.token' > user.token
 }
