@@ -71,7 +71,6 @@ setup() {
 }
 
 @test "GET /api/tenants/{tenant}/user/{username}/flights List the flights that have been reserved by a user" {
-    skip "Doesn't work for Python in empty case"
     get "/api/tenants/tenant_agent_00/user/${TRYCB_USER}/flights" \
         -H "$(auth)"
         
