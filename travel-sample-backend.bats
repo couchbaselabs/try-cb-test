@@ -83,7 +83,7 @@ setup() {
         -d @flight1.json
         
     status_is 200
-    jq_ok '.context[0] | startswith("KV update - scoped to tenant_agent_00.user:")'
+    jq_ok '.context[0] | startswith("KV update - scoped to tenant_agent_00.users:")'
     jq_is 1 '.data.added | length'
 
     diag "Booking second flight"
@@ -99,7 +99,7 @@ setup() {
         -H "$(auth)"
         
     status_is 200
-    jq_ok '.context[0] | startswith("KV get - scoped to tenant_agent_00.user:")'
+    jq_ok '.context[0] | startswith("KV get - scoped to tenant_agent_00.users:")'
     jq_is 2 '.data | length'
 }
 
