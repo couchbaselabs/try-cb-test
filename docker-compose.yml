@@ -10,7 +10,7 @@ services:
     entrypoint: ["wait-for-it", "backend:8080", "--timeout=400", "--strict", "--", "bats", "travel-sample-backend.bats"]
 
   backend:
-    build: "https://github.com/couchbaselabs/try-cb-python.git#7.0"
+    build: "https://github.com/couchbaselabs/try-cb-${TRY_CB_BACKEND}.git#7.0"
     depends_on:
       - db
     ports:
@@ -20,7 +20,7 @@ services:
       - CB_USER
       - CB_PSWD
     command: $CB_HOST $CB_USER $CB_PSWD
-    container_name: test-try-cb-api
+    container_name: "test-try-cb-api-${TRY_CB_BACKEND}"
   
   db:
     image: couchbase/server-sandbox:7.0.0
