@@ -8,7 +8,8 @@
 			"name": "Delta Air Lines",
 			"price": 445,
 			"sourceairport": "SFO",
-			"utc": "07:21:00"
+			"utc": "07:21:00",
+			"date": "12/12/2020"
 		}
 	]
 }
