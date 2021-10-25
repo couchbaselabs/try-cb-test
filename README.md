@@ -13,15 +13,28 @@ To download the test suite you can either download [the archive](https://github.
 git clone https://github.com/couchbaselabs/try-cb-test.git
 ```
 
-We recommend running the application with Docker, which starts up all components for you.
+We recommend running tests with Docker, which starts up all components for you.
 
-## Running the application with Docker
+## Running the tests with Docker
 
-You will need [Docker](https://docs.docker.com/get-docker/) installed on your machine in order to run this application as we have defined a [_Dockerfile_](Dockerfile) and a [_docker-compose.yml_](docker-compose.yml) to run Couchbase Server 7.0.0
-and one of the backend REST APIs (by default the Python one)
+You will need [Docker](https://docs.docker.com/get-docker/) installed on your machine in order to run this application as we have defined a [_Dockerfile_](Dockerfile) and a [_docker-compose.yml_](docker-compose.yml) to run Couchbase Server 7.0.0 and one of the backend REST APIs.
 
-To launch the test suite you can simply run this command from a terminal:
+### Test all backends
 
+To test all the backends, you can simply run this command from a terminal:
+
+    $ ./test-all-backends.bash
+
+This will set up Docker instances for the Couchbase server, and each backend in turn, in order to test them all.
+
+### Test one backend
+
+Set the variable `TRY_CB_BACKEND` for the backend you want to test.
+This must match the name of the project, so for example to test
+[try-cb-golang](https://github.com/couchbaselabs/try-cb-golang/)
+you would type.
+
+    $ export TRY_CB_BACKEND=golang
     $ docker-compose up test
 
 You will get output along the following lines:
@@ -39,17 +52,21 @@ You will get output along the following lines:
     test_1     | ok 3 /api/hotels/{description}/{location}/
     try-cb-test_test_1 exited with code 0
 
-To turn off the server run
+NOTE: After the tests exit, the database and backend server will still be running.
+To turn them off, run:
 
     $ docker-compose down -v
 
 ## Running the tests locally
 
-You can start a REST server with:
+You can start a REST server via Docker with, for example:
 
+    $ export TRY_CB_BACKEND=python
     $ docker-compose up backend
 
-(Or run one in mix-and-match style as documented in the relevant project)
+However, in most cases, you would be working with a checkout of the backend project,
+and running it locally in "mix-and-match" style as documented, for example at
+https://github.com/couchbaselabs/try-cb-python#running-the-backend-manually
 
 Then install `bats` with:
 
